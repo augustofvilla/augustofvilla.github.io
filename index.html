@@ -1,9 +1,48 @@
+<!DOCTYPE html>
 <html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<style>
+  .chart div {
+  font: 10px sans-serif;
+  background-color: green;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+</style>
+<script>
+  
+  d3.select("div#titulo").text("Titulo");
 
+
+var v = [4,8,15,16,23,42];
+var s= "hola mundo";
+var n = 100;
+
+d3.select("div#viz").selectAll("div").data(v).enter().append("div").
+   text(
+      function(d,i){
+          return d;
+      }
+).attr("style",
+       function(d,i){
+          return "width:"+d*10+"px";
+      }
+   );
+  
+</script>
+
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
 <body>
 
-	<div>HOLA HOLA HOLA</div>
-
+  
+  <div id="titulo"></div>
+  <div id="viz" class="chart"></div>
+  
+ 
 </body>
-
 </html>
