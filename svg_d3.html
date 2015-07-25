@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+
+<script>  
+d3.select("div#titulo").text("Titulo");
+
+var datos=[{"Provincia":"Capital Federal","Habitantes":"2891082"},
+{"Provincia":"Buenos Aires","Habitantes":"12703346"},
+{"Provincia":"Catamarca","Habitantes":"367829"},
+{"Provincia":"Córdoba","Habitantes":"3304825"},
+{"Provincia":"Corrientes","Habitantes":"993338"},
+{"Provincia":"Chaco","Habitantes":"1053466"},
+{"Provincia":"Chubut","Habitantes":"506668"},
+{"Provincia":"Entre Ríos","Habitantes":"1236300"},
+{"Provincia":"Formosa","Habitantes":"527000"},
+{"Provincia":"Jujuy","Habitantes":"672260"},
+{"Provincia":"La Pampa","Habitantes":"340000"},
+{"Provincia":"La Rioja","Habitantes":"331847"},
+{"Provincia":"Mendoza","Habitantes":"1720000"},
+{"Provincia":"Misiones","Habitantes":"1097829"},
+{"Provincia":"Neuquén","Habitantes":"550344"},
+{"Provincia":"Río Negro","Habitantes":"633664"},
+{"Provincia":"Salta","Habitantes":"1215207"},
+{"Provincia":"San Juan","Habitantes":"680427"},
+{"Provincia":"San Luis","Habitantes":"431588"},
+{"Provincia":"Santa Cruz","Habitantes":"272524"},
+{"Provincia":"Santa Fe","Habitantes":"3200736"},
+{"Provincia":"Santiago del Estero","Habitantes":"896461"},
+{"Provincia":"Tierra del Fuego,","Habitantes":"126190"},
+{"Provincia":"Antártida e Islas del Atlántico Sur","Habitantes":"126190"},
+{"Provincia":"Tucumán","Habitantes":"1448200"}];
+
+var svgContainer = d3.select("body").append("svg").attr("width", 800)
+.attr("height", 600);
+
+var rects = svgContainer.selectAll("rect").data(datos).enter().append("rect");
+
+rects.attr("x",0)
+     .attr("y",function(d,i){return (i*10)+(7*i);})
+     .attr("width",function(d){return d.Habitantes*800/12703346;})
+     .attr("height",15)
+     .attr("fill","green");
+
+var labels = svgContainer.selectAll("text").data(datos).enter().append("text");
+
+labels.attr("x",1)
+      .attr("y",function(d,i){return (i*10)+(7*i);})
+      .attr("dy", ".78em")
+      .attr("font-weight","bold")
+      .text(function(d){return d.Provincia;});
+</script>
+ 
+</body>
+</html>
