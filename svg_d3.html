@@ -41,7 +41,7 @@ var svgContainer = d3.select("body").append("svg").attr("width", 800)
 
 var rects = svgContainer.selectAll("rect").data(datos).enter().append("rect");
 
-rects.attr("x",0)
+rects.attr("x",240)
      .attr("y",function(d,i){return (i*10)+(7*i);})
      .attr("width",function(d){return d.Habitantes*800/12703346;})
      .attr("height",15)
