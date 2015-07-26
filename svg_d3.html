@@ -36,7 +36,7 @@ var datos=[{"Provincia":"Capital Federal","Habitantes":"2891082"},
 {"Provincia":"Antártida e Islas del Atlántico Sur","Habitantes":"126190"},
 {"Provincia":"Tucumán","Habitantes":"1448200"}];
 
-var svgContainer = d3.select("body").append("svg").attr("width", 800)
+var svgContainer = d3.select("body").append("svg").attr("width", 1200)
 .attr("height", 600);
 
 var rects = svgContainer.selectAll("rect").data(datos).enter().append("rect");
@@ -47,13 +47,21 @@ rects.attr("x",240)
      .attr("height",15)
      .attr("fill","green");
 
-var labels = svgContainer.selectAll("text").data(datos).enter().append("text");
+var labels = svgContainer.selectAll("text.labels").data(datos).enter().append("text");
 
 labels.attr("x",1)
       .attr("y",function(d,i){return (i*10)+(7*i);})
       .attr("dy", ".78em")
-      .attr("font-weight","bold")
       .text(function(d){return d.Provincia;});
+
+var habitantes = svgContainer.selectAll("text.values").data(datos).enter().append("text");
+
+habitantes.attr("x",function(d){return 240 + (d.Habitantes*800/12703346);})
+      .attr("y",function(d,i){return (i*10)+(7*i);})
+      .attr("dy", ".78em")
+      .text(function(d){return d.Habitantes;});
+
+
 </script>
  
 </body>
